@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PivotTable.js</title>
+
+        <!-- external libs from cdnjs -->
+        <link rel="stylesheet" type="text/css" href="http://localhost:8888/static/pivot-ajax/c3.min.css">
+        <script type="text/javascript" src="http://localhost:8888/static/pivot-ajax/jquery.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/static/pivot-ajax/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/static/pivot-ajax/d3.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/static/pivot-ajax/jquery.csv-0.71.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/static/pivot-ajax/c3.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="http://localhost:8888/static/pivottable/pivot.min.css">
+        <script type="text/javascript" src="http://localhost:8888/static/pivottable/pivot.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/static/pivottable/d3_renderers.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/static/pivottable/c3_renderers.min.js"></script>
+        <script type="text/javascript" src="http://localhost:8888/static/pivottable/export_renderers.min.js"></script>
+
+        <style>
+            body {font-family: Verdana;}
+            .node {
+              border: solid 1px white;
+              font: 10px sans-serif;
+              line-height: 12px;
+              overflow: hidden;
+              position: absolute;
+              text-indent: 2px;
+            }
+            .c3-line, .c3-focused {stroke-width: 3px !important;}
+            .c3-bar {stroke: white !important; stroke-width: 1;}
+            .c3 text { font-size: 12px; color: grey;}
+            .tick line {stroke: white;}
+            .c3-axis path {stroke: grey;}
+            .c3-circle { opacity: 1 !important; }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(function(){
+                if(window.location != window.parent.location)
+                    $("<a>", {target:"_blank", href:""})
+                        .text("[pop out]").prependTo($("body"));
+
+                $("#output").pivotUI(
+                    $.csv.toArrays($("#output").text()),
+                    {
+                        renderers: $.extend(
+                            $.pivotUtilities.renderers,
+                            $.pivotUtilities.c3_renderers,
+                            $.pivotUtilities.d3_renderers,
+                            $.pivotUtilities.export_renderers
+                            ),
+                        hiddenAttributes: [""]
+                    }
+                ).show();
+             });
+        </script>
+        <div id="output" style="display: none;">,distinct_id,event,week,ones,wwgrowth
+7,alan@weebly.com,View group,2016-11-28/2016-12-04,1,-0.888888888889
+8,alan@weebly.com,View group,2016-12-05/2016-12-11,5,4.0
+18,alan@weebly.com,View rep,2016-12-05/2016-12-11,1,-0.961538461538
+19,alan@weebly.com,View transcript,2016-12-05/2016-12-11,2,1.0
+28,dan.brown@livestream.com,Click into search,2016-12-26/2017-01-01,10,9.0
+37,dan.brown@livestream.com,View group,2016-11-28/2016-12-04,11,0.0
+38,dan.brown@livestream.com,View group,2016-12-26/2017-01-01,7,-0.363636363636
+49,dan.brown@livestream.com,View rep,2016-11-28/2016-12-04,14,-0.481481481481
+50,dan.brown@livestream.com,View rep,2016-12-26/2017-01-01,3,-0.785714285714
+51,dan.brown@livestream.com,View rep skill,2016-12-26/2017-01-01,6,1.0
+53,dan.brown@livestream.com,View transcript,2016-12-26/2017-01-01,1,0.0
+71,julian.a@weebly.com,View group,2016-12-05/2016-12-11,8,7.0
+72,julian.a@weebly.com,View group,2016-12-12/2016-12-18,4,-0.5
+73,julian.a@weebly.com,View group,2016-12-19/2016-12-25,6,0.5
+74,julian.a@weebly.com,View group,2016-12-26/2017-01-01,11,0.833333333333
+75,julian.a@weebly.com,View rep,2016-11-28/2016-12-04,6,-0.454545454545
+76,julian.a@weebly.com,View rep,2016-12-05/2016-12-11,9,0.5
+77,julian.a@weebly.com,View rep,2016-12-12/2016-12-18,4,-0.555555555556
+78,julian.a@weebly.com,View rep,2016-12-19/2016-12-25,6,0.5
+79,julian.a@weebly.com,View rep,2016-12-26/2017-01-01,9,0.5
+80,julian.a@weebly.com,View rep skill,2016-12-19/2016-12-25,47,4.22222222222
+81,julian.a@weebly.com,View rep skill,2016-12-26/2017-01-01,27,-0.425531914894
+82,julian.a@weebly.com,View transcript,2016-12-05/2016-12-11,15,-0.444444444444
+83,julian.a@weebly.com,View transcript,2016-12-12/2016-12-18,11,-0.266666666667
+84,julian.a@weebly.com,View transcript,2016-12-19/2016-12-25,3,-0.727272727273
+85,kacey.c@weebly.com,Filter transcript,2016-12-12/2016-12-18,7,1.33333333333
+86,kacey.c@weebly.com,Save note,2016-12-12/2016-12-18,1,-0.857142857143
+88,kacey.c@weebly.com,View group,2016-11-28/2016-12-04,1,-0.888888888889
+89,kacey.c@weebly.com,View group,2016-12-05/2016-12-11,3,2.0
+90,kacey.c@weebly.com,View group,2016-12-19/2016-12-25,2,-0.333333333333
+91,kacey.c@weebly.com,View group,2017-01-02/2017-01-08,2,0.0
+93,kacey.c@weebly.com,View rep,2016-12-05/2016-12-11,1,-0.666666666667
+94,kacey.c@weebly.com,View transcript,2016-12-05/2016-12-11,1,0.0
+95,kacey.c@weebly.com,View transcript,2016-12-12/2016-12-18,4,3.0
+96,kenneth@tawkify.com,Filter by date,2016-12-19/2016-12-25,15,2.75
+97,kenneth@tawkify.com,Filter transcript,2016-12-05/2016-12-11,3,-0.8
+98,kenneth@tawkify.com,Filter transcript,2016-12-12/2016-12-18,8,1.66666666667
+99,kenneth@tawkify.com,Filter transcript,2016-12-19/2016-12-25,18,1.25
+100,kenneth@tawkify.com,Filter transcript,2016-12-26/2017-01-01,2,-0.888888888889
+101,kenneth@tawkify.com,Save note,2016-12-19/2016-12-25,1,-0.5
+105,kenneth@tawkify.com,View group,2016-11-28/2016-12-04,10,0.25
+106,kenneth@tawkify.com,View group,2016-12-05/2016-12-11,2,-0.8
+107,kenneth@tawkify.com,View group,2016-12-12/2016-12-18,6,2.0
+108,kenneth@tawkify.com,View group,2016-12-19/2016-12-25,12,1.0
+109,kenneth@tawkify.com,View group,2016-12-26/2017-01-01,1,-0.916666666667
+116,kenneth@tawkify.com,View rep,2016-11-28/2016-12-04,36,2.0
+117,kenneth@tawkify.com,View rep,2016-12-12/2016-12-18,5,-0.861111111111
+118,kenneth@tawkify.com,View rep,2016-12-19/2016-12-25,11,1.2
+119,kenneth@tawkify.com,View rep,2016-12-26/2017-01-01,1,-0.909090909091
+120,kenneth@tawkify.com,View rep skill,2016-12-19/2016-12-25,64,63.0
+121,kenneth@tawkify.com,View transcript,2016-11-28/2016-12-04,12,-0.8125
+122,kenneth@tawkify.com,View transcript,2016-12-05/2016-12-11,18,0.5
+123,kenneth@tawkify.com,View transcript,2016-12-12/2016-12-18,12,-0.333333333333
+124,kenneth@tawkify.com,View transcript,2016-12-19/2016-12-25,22,0.833333333333
+125,kenneth@tawkify.com,View transcript,2016-12-26/2017-01-01,1,-0.954545454545
+128,ronald.r@weebly.com,View group,2016-11-28/2016-12-04,3,2.0
+129,ronald.r@weebly.com,View group,2016-12-12/2016-12-18,2,-0.333333333333
+130,ronald.r@weebly.com,View group,2017-01-02/2017-01-08,1,-0.5
+135,ronald.r@weebly.com,View rep,2016-11-28/2016-12-04,6,1.0
+136,ronald.r@weebly.com,View rep,2016-12-05/2016-12-11,1,-0.833333333333
+137,ronald.r@weebly.com,View rep,2016-12-12/2016-12-18,1,0.0
+138,ronald.r@weebly.com,View rep,2016-12-26/2017-01-01,1,0.0
+139,ronald.r@weebly.com,View rep skill,2016-12-26/2017-01-01,8,7.0
+140,ronald.r@weebly.com,View transcript,2016-12-12/2016-12-18,1,-0.875
+141,ronald.r@weebly.com,View transcript,2016-12-26/2017-01-01,1,0.0
+149,salvatore.romana@livestream.com,View group,2016-11-28/2016-12-04,4,-0.2
+160,shawn.i@weebly.com,View group,2016-11-28/2016-12-04,1,0.0
+167,shawn.i@weebly.com,View rep,2016-11-28/2016-12-04,1,0.0
+168,william.b@weebly.com,Filter by date,2016-12-19/2016-12-25,3,2.0
+169,william.b@weebly.com,Filter transcript,2016-12-12/2016-12-18,3,0.0
+170,william.b@weebly.com,Save note,2016-12-12/2016-12-18,10,2.33333333333
+171,william.b@weebly.com,Save note,2016-12-19/2016-12-25,1,-0.9
+173,william.b@weebly.com,View group,2016-11-28/2016-12-04,7,-0.5
+174,william.b@weebly.com,View group,2016-12-05/2016-12-11,11,0.571428571429
+175,william.b@weebly.com,View group,2016-12-12/2016-12-18,5,-0.545454545455
+176,william.b@weebly.com,View group,2016-12-19/2016-12-25,5,0.0
+177,william.b@weebly.com,View group,2016-12-26/2017-01-01,2,-0.6
+178,william.b@weebly.com,View note,2016-12-12/2016-12-18,1,-0.5
+180,william.b@weebly.com,View rep,2016-11-28/2016-12-04,7,-0.461538461538
+181,william.b@weebly.com,View rep,2016-12-05/2016-12-11,1,-0.857142857143
+182,william.b@weebly.com,View rep,2016-12-12/2016-12-18,2,1.0
+183,william.b@weebly.com,View rep,2016-12-19/2016-12-25,2,0.0
+184,william.b@weebly.com,View rep,2016-12-26/2017-01-01,1,-0.5
+185,william.b@weebly.com,View rep skill,2016-12-19/2016-12-25,6,5.0
+186,william.b@weebly.com,View rep skill,2016-12-26/2017-01-01,1,-0.833333333333
+187,william.b@weebly.com,View transcript,2016-11-28/2016-12-04,5,4.0
+188,william.b@weebly.com,View transcript,2016-12-05/2016-12-11,22,3.4
+189,william.b@weebly.com,View transcript,2016-12-12/2016-12-18,21,-0.0454545454545
+190,william.b@weebly.com,View transcript,2016-12-19/2016-12-25,3,-0.857142857143
+191,william.b@weebly.com,View transcript,2016-12-26/2017-01-01,5,0.666666666667
+</div>
+    </body>
+</html>
